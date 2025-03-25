@@ -11,7 +11,8 @@ package mx.itson.castor.business;
 public class Temperatura {
     
     /**
-     * 
+     * Metodo que calcula la temperatura
+     *
      * @param centigrados
      * @return 
      */
