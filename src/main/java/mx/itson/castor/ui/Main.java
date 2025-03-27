@@ -4,6 +4,8 @@
  */
 package mx.itson.castor.ui;
 
+import mx.itson.castor.business.Temperatura;
+
 /**
  *
  * @author alumnog
@@ -50,8 +52,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        lblResultado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblResultado.setForeground(new java.awt.Color(0, 255, 255));
         lblResultado.setText("...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -63,15 +63,14 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtTemperatura))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(lblResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(lblResultado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAceptar)))
+                        .addComponent(btnAceptar))
+                    .addComponent(txtTemperatura))
                 .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
@@ -81,11 +80,14 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(lblNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptar)
-                    .addComponent(lblResultado))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAceptar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(lblResultado)))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,7 +98,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTemperaturaActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-    
+        try{
+        double centigrados =  Double.parseDouble(txtTemperatura.getText());
+            double fahrenheit = Temperatura.convertirGrados(centigrados);
+            lblResultado.setText("La conversion a fahrenheit: " + fahrenheit );
+        } catch(Exception ex){
+            
+            System.err.println("No se pudo hacer la conversion");
+        }
         
     }//GEN-LAST:event_btnAceptarActionPerformed
 

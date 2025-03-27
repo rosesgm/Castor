@@ -11,13 +11,14 @@ package mx.itson.castor.business;
 public class Temperatura {
     
     /**
-     * Metodo que calcula la temperatura
+     * Metodo que calcula la temperatura de centigradoas a farenheit
      *
-     * @param centigrados
-     * @return 
+     * @param centigrados la cantidad de grados centigrados a calcular
+     * @return el resultado convertido a farenheit
      */
-    public double converirGrados(double centigrados) {
-      double  formula= centigrados*(9/5)+32;
-        return formula;
+    public static double convertirGrados(double centigrados) {
+      
+        
+        return centigrados * 1.8 +32;
     }
 }
